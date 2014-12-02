@@ -12,17 +12,26 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var textMealCost: UITextField!
     
-    @IBOutlet weak var textTip: UITextField!
+    @IBOutlet weak var sliderTip: UISlider!
     
     @IBOutlet weak var labelTipCalculated: UILabel!
     
-    var mealCost       = ""
-    var tipPercentage  = ""
+    @IBOutlet weak var labelTipValue: UILabel!
+    @IBAction func didSliderTipChange(sender: UISlider) {
+        var tipFormat = NSString(format: "%0.f", sliderTip.value)
+        labelTipValue.text = "\(tipFormat)%"
+        calculateTip()
+    }
+    
+    var mealCost = ""
+    var tipPercentage : Float = 0
     var answer : Float = 0
+    var sliderTipDefault : Float = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        sliderTipDefault = sliderTip.value;
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,16 +44,20 @@ class ViewController: UIViewController {
     }
 
     @IBAction func buttonClear(sender: UIButton) {
+        textMealCost.text       = ""
+        sliderTip.value         = sliderTipDefault
+        labelTipCalculated.text = ""
+        textMealCost.becomeFirstResponder()
     }
     
     func calculateTip() -> Bool {
         mealCost      = textMealCost.text
-        tipPercentage = textTip.text
+        // Tip percentage must be rounded to match label
+        tipPercentage = round(sliderTip.value)
         
-        var floatMealCost      = (mealCost as NSString).floatValue
-        var floatTipPercentage = (tipPercentage as NSString).floatValue
+        var floatMealCost = (mealCost as NSString).floatValue
 
-        answer = floatMealCost * floatTipPercentage / 100
+        answer = floatMealCost * tipPercentage / 100
         
         // Format answer as currency
         var answerFormat = NSString(format: "%0.2f", answer)
