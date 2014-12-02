@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var labelTipCalculated: UILabel!
     
     @IBOutlet weak var labelTipValue: UILabel!
+    
     @IBAction func didSliderTipChange(sender: UISlider) {
         var tipFormat = NSString(format: "%0.f", sliderTip.value)
         labelTipValue.text = "\(tipFormat)%"
@@ -51,6 +52,9 @@ class ViewController: UIViewController {
     }
     
     func calculateTip() -> Bool {
+        // Dismiss keyboard
+        textMealCost.resignFirstResponder()
+        
         mealCost      = textMealCost.text
         // Tip percentage must be rounded to match label
         tipPercentage = round(sliderTip.value)
