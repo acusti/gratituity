@@ -17,11 +17,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var labelTipCalculated:   UILabel!
     @IBOutlet weak var labelTotalCalculated: UILabel!
     
-    // Defaults for resetting UI
+    // Declare defaults for resetting UI state
     var sliderTipDefault:            Float  = 0
     var labelTipCalculatedDefault:   String = ""
     var labelTotalCalculatedDefault: String = ""
     
+    // TODO: Support all device orientations
+    // override func supportedInterfaceOrientations() -> Int {
+    //    return Int(UIInterfaceOrientationMask.All.rawValue)
+    // }
+    // Kick it off
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
