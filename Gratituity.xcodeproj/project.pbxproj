@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		381EA0DF1A2F7A2B0013E835 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 381EA0DE1A2F7A2B0013E835 /* .gitignore */; };
 		38A032161A2D7F070005DD11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A032151A2D7F070005DD11 /* AppDelegate.swift */; };
 		38A032191A2D7F070005DD11 /* Swift_Tip_Calculator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 38A032171A2D7F070005DD11 /* Swift_Tip_Calculator.xcdatamodeld */; };
 		38A0321B1A2D7F070005DD11 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A0321A1A2D7F070005DD11 /* ViewController.swift */; };
 		38A0321E1A2D7F070005DD11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38A0321C1A2D7F070005DD11 /* Main.storyboard */; };
 		38A032201A2D7F070005DD11 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38A0321F1A2D7F070005DD11 /* Images.xcassets */; };
 		38A032231A2D7F070005DD11 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38A032211A2D7F070005DD11 /* LaunchScreen.xib */; };
-		38A0322F1A2D7F080005DD11 /* Swift_Tip_CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A0322E1A2D7F080005DD11 /* Swift_Tip_CalculatorTests.swift */; };
+		38A0322F1A2D7F080005DD11 /* GratituityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A0322E1A2D7F080005DD11 /* GratituityTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		381EA0DE1A2F7A2B0013E835 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		38A032101A2D7F070005DD11 /* Gratituity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gratituity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38A032141A2D7F070005DD11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38A032151A2D7F070005DD11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -37,7 +39,7 @@
 		38A032221A2D7F070005DD11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		38A032281A2D7F080005DD11 /* GratituityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GratituityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		38A0322D1A2D7F080005DD11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		38A0322E1A2D7F080005DD11 /* Swift_Tip_CalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_Tip_CalculatorTests.swift; sourceTree = "<group>"; };
+		38A0322E1A2D7F080005DD11 /* GratituityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GratituityTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +63,9 @@
 		38A032071A2D7F070005DD11 = {
 			isa = PBXGroup;
 			children = (
+				381EA0DE1A2F7A2B0013E835 /* .gitignore */,
 				38A032121A2D7F070005DD11 /* Gratituity */,
-				38A0322B1A2D7F080005DD11 /* Swift Tip CalculatorTests */,
+				38A0322B1A2D7F080005DD11 /* GratituityTests */,
 				38A032111A2D7F070005DD11 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -87,8 +90,7 @@
 				38A032171A2D7F070005DD11 /* Swift_Tip_Calculator.xcdatamodeld */,
 				38A032131A2D7F070005DD11 /* Supporting Files */,
 			);
-			name = Gratituity;
-			path = "Swift Tip Calculator";
+			path = Gratituity;
 			sourceTree = "<group>";
 		};
 		38A032131A2D7F070005DD11 /* Supporting Files */ = {
@@ -99,13 +101,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		38A0322B1A2D7F080005DD11 /* Swift Tip CalculatorTests */ = {
+		38A0322B1A2D7F080005DD11 /* GratituityTests */ = {
 			isa = PBXGroup;
 			children = (
-				38A0322E1A2D7F080005DD11 /* Swift_Tip_CalculatorTests.swift */,
+				38A0322E1A2D7F080005DD11 /* GratituityTests.swift */,
 				38A0322C1A2D7F080005DD11 /* Supporting Files */,
 			);
-			path = "Swift Tip CalculatorTests";
+			path = GratituityTests;
 			sourceTree = "<group>";
 		};
 		38A0322C1A2D7F080005DD11 /* Supporting Files */ = {
@@ -197,6 +199,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				381EA0DF1A2F7A2B0013E835 /* .gitignore in Resources */,
 				38A0321E1A2D7F070005DD11 /* Main.storyboard in Resources */,
 				38A032231A2D7F070005DD11 /* LaunchScreen.xib in Resources */,
 				38A032201A2D7F070005DD11 /* Images.xcassets in Resources */,
@@ -227,7 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38A0322F1A2D7F080005DD11 /* Swift_Tip_CalculatorTests.swift in Sources */,
+				38A0322F1A2D7F080005DD11 /* GratituityTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,7 +347,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "Swift Tip Calculator/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Gratituity/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Gratituity;
 			};
@@ -354,7 +357,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "Swift Tip Calculator/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Gratituity/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Gratituity;
 			};
@@ -372,7 +375,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "Swift Tip CalculatorTests/Info.plist";
+				INFOPLIST_FILE = GratituityTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = GratituityTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gratituity.app/Gratituity";
@@ -387,7 +390,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "Swift Tip CalculatorTests/Info.plist";
+				INFOPLIST_FILE = GratituityTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = GratituityTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gratituity.app/Gratituity";

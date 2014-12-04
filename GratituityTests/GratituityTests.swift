@@ -1,6 +1,6 @@
 //
-//  Swift_Tip_CalculatorTests.swift
-//  Swift Tip CalculatorTests
+//  GratituityTests.swift
+//  GratituityTests
 //
 //  Created by Andrew Patton on 2014-12-02.
 //  Copyright (c) 2014 acusti.ca. All rights reserved.
@@ -9,7 +9,7 @@
 import UIKit
 import XCTest
 
-class Swift_Tip_CalculatorTests: XCTestCase {
+class GratituityTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
