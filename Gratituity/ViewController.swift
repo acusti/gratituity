@@ -47,8 +47,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
             return false
         }
         // Reconstruct value of textfield for calculateTip()
-        // ReplacementString is the addedText (so, if action was deleting text, it is an empty string)
-        // Range indicates portion of existing text to change; so if just adding text, length is 0, while if deleting, length is 1 and location is where deletion occured
+        // The range represents what part of the text should be replaced by replacementString
+        // If user added text, range length is 0; if user deleted, range length is 1 and replacementString is empty
         // Lastly, need to cast textField.text to NSString because range is an NSRange
         let textFieldBefore : NSString = textField.text
         var textFieldValue  : String
