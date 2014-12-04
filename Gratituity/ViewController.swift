@@ -10,19 +10,16 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var textMealCost: UITextField!
-    
-    @IBOutlet weak var sliderTip: UISlider!
-    
-    @IBOutlet weak var labelTipValue: UILabel!
-    
-    @IBOutlet weak var labelTipCalculated: UILabel!
-    
+    // Declare storyboard's Interface Builder outlets
+    @IBOutlet weak var textMealCost:         UITextField!
+    @IBOutlet weak var sliderTip:            UISlider!
+    @IBOutlet weak var labelTipValue:        UILabel!
+    @IBOutlet weak var labelTipCalculated:   UILabel!
     @IBOutlet weak var labelTotalCalculated: UILabel!
     
     // Defaults for resetting UI
-    var sliderTipDefault           : Float  = 0
-    var labelTipCalculatedDefault  : String = ""
+    var sliderTipDefault:            Float  = 0
+    var labelTipCalculatedDefault:   String = ""
     var labelTotalCalculatedDefault: String = ""
     
     override func viewDidLoad() {
@@ -50,9 +47,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // The range represents what part of the text should be replaced by replacementString
         // If user added text, range length is 0; if user deleted, range length is 1 and replacementString is empty
         // Lastly, need to cast textField.text to NSString because range is an NSRange
-        let textFieldBefore : NSString = textField.text
-        var textFieldValue  : String
-            = textFieldBefore.substringToIndex(range.location) +
+        let textFieldBefore: NSString = textField.text
+        var textFieldValue:  String   =
+              textFieldBefore.substringToIndex(range.location) +
               addedCharacter +
               textFieldBefore.substringFromIndex(range.location + range.length)
         
@@ -101,8 +98,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         var calculatedTipFormat   = NSString(format: "%0.2f", calculatedTip)
         var calculatedTotalFormat = NSString(format: "%0.2f", calculatedTotal)
         
-        labelTipCalculated.text = "$\(calculatedTipFormat)"
-        
+        labelTipCalculated.text   = "$\(calculatedTipFormat)"
         labelTotalCalculated.text = "$\(calculatedTotalFormat)"
         
         return true
