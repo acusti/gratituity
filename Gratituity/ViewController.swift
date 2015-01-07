@@ -49,19 +49,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
         labelTotalCalculatedPerPersonDefault = labelTotalCalculatedPerPerson.text!
         
         // Set up Done toolbar for “cost of meal” numeric keyboard
-        let textMealCostDoneButton  = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "didTextMealCostEndEditing")
-        let textMealCostSpaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
-        let textMealCostToolbarButtons = [textMealCostSpaceButton, textMealCostDoneButton]
-        
-        let textMealCostToolbar = UIToolbar()
-        textMealCostToolbar.sizeToFit()
-        textMealCostToolbar.tintColor = appStyles.colors["accent"]
-        textMealCostToolbar.barStyle = UIBarStyle.Black
-        textMealCostToolbar.setItems(textMealCostToolbarButtons, animated: false)
-        
-        // Set toolbar as inputAccessoryView of textMealCost
-        textMealCost.inputAccessoryView = textMealCostToolbar
-        
+        // If applicationFrame height is not tall enough
+        if UIScreen.mainScreen().applicationFrame.height < 640 {
+            let textMealCostDoneButton  = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "didTextMealCostEndEditing")
+            let textMealCostSpaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+            let textMealCostToolbarButtons = [textMealCostSpaceButton, textMealCostDoneButton]
+            
+            let textMealCostToolbar = UIToolbar()
+            textMealCostToolbar.sizeToFit()
+            textMealCostToolbar.tintColor = appStyles.colors["accent"]
+            textMealCostToolbar.barStyle = UIBarStyle.Black
+            textMealCostToolbar.setItems(textMealCostToolbarButtons, animated: false)
+            
+            // Set toolbar as inputAccessoryView of textMealCost
+            textMealCost.inputAccessoryView = textMealCostToolbar
+        }
         // Give text meal cost field focus and show keyboard
         textMealCost.becomeFirstResponder()
     }
@@ -117,7 +119,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         calculateTip()
     }
     
-    // Calculate new tip break down when number of diners value changes
+    // Calculate new tip breakdown when number of diners value changes
     @IBAction func didSegmentedNumberPeopleChange(sender: UISegmentedControl) {
         calculateTip()
     }
