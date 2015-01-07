@@ -56,7 +56,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let textMealCostToolbar = UIToolbar()
         textMealCostToolbar.sizeToFit()
         textMealCostToolbar.tintColor = appStyles.colors["accent"]
-        // textMealCostToolbar.barStyle = UIBarStyle.Black
+        textMealCostToolbar.barStyle = UIBarStyle.Black
         textMealCostToolbar.setItems(textMealCostToolbarButtons, animated: false)
         
         // Set toolbar as inputAccessoryView of textMealCost

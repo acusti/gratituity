@@ -22,7 +22,9 @@
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="BKJ-0c-TgU"/>
+                                    <constraint firstAttribute="height" constant="65" id="BKJ-0c-TgU">
+                                        <variation key="widthClass=compact" constant="62"/>
+                                    </constraint>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="38"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="decimalPad" keyboardAppearance="alert" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
@@ -267,7 +269,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="kkv-Ts-qrr" secondAttribute="trailing" id="M7b-Hg-FnV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rS3-wc-wn2" secondAttribute="trailing" id="NEM-bh-Yjm"/>
                             <constraint firstItem="JbX-IP-Cct" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="46" id="Od4-nR-dM2">
-                                <variation key="widthClass=compact" constant="0.0"/>
+                                <variation key="widthClass=compact" constant="3"/>
                             </constraint>
                             <constraint firstItem="JbX-IP-Cct" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="PdQ-dF-HIA"/>
                             <constraint firstItem="hur-rI-PHn" firstAttribute="top" secondItem="Fha-Ry-ffY" secondAttribute="bottom" id="Q8r-gQ-4XG"/>
