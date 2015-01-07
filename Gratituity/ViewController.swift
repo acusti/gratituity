@@ -77,10 +77,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if addedCharacter == "." && find(textField.text, ".") != nil {
             return false
         }
-        // Add "$" if not yet present (either textfield is empty or it doesn't yet have "$")
-        if countElements(textField.text) == 0 || textField.text[textField.text.startIndex] != "$" {
-            textField.text = "$" + textField.text
-        }
+        
         // Reconstruct value of textfield for calculateTip()
         // The range represents what part of the text should be replaced by replacementString
         // If user added text, range length is 0; if user deleted, range length is 1 and replacementString is empty
@@ -93,6 +90,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         self.calculateTip(textFieldValue)
         return true
+    }
+    
+    // Use UITextField's editing changed event to manage "$" prefix
+    @IBAction func didTextMealCostChanged(sender: UITextField) {
+        // Add "$" if not yet present (textfield is not empty and doesn't yet have "$")
+        if countElements(sender.text) > 0 && sender.text[sender.text.startIndex] != "$" {
+            sender.text = "$" + sender.text
+        }
     }
     
     // When user clicks clear button in textfield, reset app state
