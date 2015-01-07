@@ -11,29 +11,58 @@ import UIKit
 class ViewController: UIViewController, UITextFieldDelegate {
 
     // Declare storyboard's Interface Builder outlets
-    @IBOutlet weak var textMealCost:         UITextField!
-    @IBOutlet weak var sliderTip:            UISlider!
-    @IBOutlet weak var labelTipValue:        UILabel!
-    @IBOutlet weak var labelTipCalculated:   UILabel!
-    @IBOutlet weak var labelTotalCalculated: UILabel!
+    @IBOutlet weak var textMealCost:                  UITextField!
+    @IBOutlet weak var sliderTip:                     UISlider!
+    @IBOutlet weak var labelTipValue:                 UILabel!
+    @IBOutlet weak var labelTipCalculated:            UILabel!
+    @IBOutlet weak var labelTotalCalculated:          UILabel!
+    @IBOutlet weak var segmentedNumberPeople:         UISegmentedControl!
+    @IBOutlet weak var labelTipCalculatedPerPerson:   UILabel!
+    @IBOutlet weak var labelTotalCalculatedPerPerson: UILabel!
     
     // Declare defaults for resetting UI state
-    var sliderTipDefault:            Float  = 0
-    var labelTipCalculatedDefault:   String = ""
-    var labelTotalCalculatedDefault: String = ""
+    var sliderTipDefault:                     Float  = 0
+    var labelTipCalculatedDefault:            String = ""
+    var labelTotalCalculatedDefault:          String = ""
+    var segmentedNumberPeopleDefault:         Int    = 0
+    var labelTipCalculatedPerPersonDefault:   String = ""
+    var labelTotalCalculatedPerPersonDefault: String = ""
+    var segmentedNumberPeopleOffset:          Int    = 2
     
-    // TODO: Support all device orientations
-    // override func supportedInterfaceOrientations() -> Int {
-    //    return Int(UIInterfaceOrientationMask.All.rawValue)
-    // }
+    // Fetch app styling constants
+    let appStyles = GratuityStyles()
+    
     // Kick it off
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        textMealCost.delegate       = self
-        sliderTipDefault            = sliderTip.value
-        labelTipCalculatedDefault   = labelTipCalculated.text!
-        labelTotalCalculatedDefault = labelTotalCalculated.text!
+        
+        // Set default tint color
+        self.view.tintColor = appStyles.colors["accent"]
+        
+        // Set up defaults
+        textMealCost.delegate                = self
+        sliderTipDefault                     = sliderTip.value
+        labelTipCalculatedDefault            = labelTipCalculated.text!
+        labelTotalCalculatedDefault          = labelTotalCalculated.text!
+        segmentedNumberPeopleDefault         = segmentedNumberPeople.selectedSegmentIndex + segmentedNumberPeopleOffset
+        labelTipCalculatedPerPersonDefault   = labelTipCalculatedPerPerson.text!
+        labelTotalCalculatedPerPersonDefault = labelTotalCalculatedPerPerson.text!
+        
+        // Set up Done toolbar for “cost of meal” numeric keyboard
+        let textMealCostDoneButton  = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: "didTextMealCostEndEditing")
+        let textMealCostSpaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
+        let textMealCostToolbarButtons = [textMealCostSpaceButton, textMealCostDoneButton]
+        
+        let textMealCostToolbar = UIToolbar()
+        textMealCostToolbar.sizeToFit()
+        textMealCostToolbar.tintColor = appStyles.colors["accent"]
+        textMealCostToolbar.barStyle = UIBarStyle.Black
+        textMealCostToolbar.setItems(textMealCostToolbarButtons, animated: false)
+        
+        // Set toolbar as inputAccessoryView of textMealCost
+        textMealCost.inputAccessoryView = textMealCostToolbar
+        
+        // Give text meal cost field focus and show keyboard
         textMealCost.becomeFirstResponder()
     }
 
@@ -54,9 +83,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Lastly, need to cast textField.text to NSString because range is an NSRange
         let textFieldBefore: NSString = textField.text
         var textFieldValue:  String   =
-              textFieldBefore.substringToIndex(range.location) +
-              addedCharacter +
-              textFieldBefore.substringFromIndex(range.location + range.length)
+            textFieldBefore.substringToIndex(range.location) +
+            addedCharacter +
+            textFieldBefore.substringFromIndex(range.location + range.length)
         
         self.calculateTip(textFieldValue)
         return true
@@ -67,6 +96,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         resetState()
         return true
     }
+
+    func didTextMealCostEndEditing() {
+        textMealCost.resignFirstResponder()
+    }
     
     // Calculate new tip when tip slider's value changes
     @IBAction func didSliderTipChange(sender: UISlider) {
@@ -74,7 +107,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         labelTipValue.text = "\(tipFormat)%"
         calculateTip()
     }
-
+    
+    // Calculate new tip break down when number of diners value changes
+    @IBAction func didSegmentedNumberPeopleChange(sender: UISegmentedControl) {
+        calculateTip()
+    }
+    
     // Function to reset the app state
     // @param optional Bool isSliderTipReset indicates whether to also reset tipSlider
     func resetState(isSliderTipReset : Bool = false) {
@@ -106,6 +144,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
         labelTipCalculated.text   = "$\(calculatedTipFormat)"
         labelTotalCalculated.text = "$\(calculatedTotalFormat)"
         
+        // Now calculate tip and totals per person
+        var numberPeople = Float(segmentedNumberPeople.selectedSegmentIndex + segmentedNumberPeopleOffset)
+
+        var calculatedTipPerPerson   = calculatedTip / numberPeople
+        var calculatedTotalPerPerson = calculatedTotal / numberPeople
+
+        // Format calculations as currency
+        var calculatedTipPerPersonFormat   = NSString(format: "%0.2f", calculatedTipPerPerson)
+        var calculatedTotalPerPersonFormat = NSString(format: "%0.2f", calculatedTotalPerPerson)
+        
+        labelTipCalculatedPerPerson.text   = "$\(calculatedTipPerPersonFormat)"
+        labelTotalCalculatedPerPerson.text = "$\(calculatedTotalPerPersonFormat)"
+
         return true
     }
 }

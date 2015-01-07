@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		381EA0DF1A2F7A2B0013E835 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 381EA0DE1A2F7A2B0013E835 /* .gitignore */; };
+		381EEC781A5D0440007AF94D /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381EEC771A5D0440007AF94D /* Styles.swift */; };
 		38A032161A2D7F070005DD11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A032151A2D7F070005DD11 /* AppDelegate.swift */; };
 		38A032191A2D7F070005DD11 /* Swift_Tip_Calculator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 38A032171A2D7F070005DD11 /* Swift_Tip_Calculator.xcdatamodeld */; };
 		38A0321B1A2D7F070005DD11 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A0321A1A2D7F070005DD11 /* ViewController.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		381EA0DE1A2F7A2B0013E835 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		381EEC771A5D0440007AF94D /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		38A032101A2D7F070005DD11 /* Gratituity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gratituity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38A032141A2D7F070005DD11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		38A032151A2D7F070005DD11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				38A032211A2D7F070005DD11 /* LaunchScreen.xib */,
 				38A032171A2D7F070005DD11 /* Swift_Tip_Calculator.xcdatamodeld */,
 				38A032131A2D7F070005DD11 /* Supporting Files */,
+				381EEC771A5D0440007AF94D /* Styles.swift */,
 			);
 			path = Gratituity;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				38A0321B1A2D7F070005DD11 /* ViewController.swift in Sources */,
 				38A032161A2D7F070005DD11 /* AppDelegate.swift in Sources */,
 				38A032191A2D7F070005DD11 /* Swift_Tip_Calculator.xcdatamodeld in Sources */,
+				381EEC781A5D0440007AF94D /* Styles.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
