@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
-
+    
     // Declare storyboard's Interface Builder outlets
     @IBOutlet weak var textMealCost:                  UITextField!
     @IBOutlet weak var sliderTip:                     UISlider!
@@ -65,7 +65,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Give text meal cost field focus and show keyboard
         textMealCost.becomeFirstResponder()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -77,13 +77,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if addedCharacter == "." && find(textField.text, ".") != nil {
             return false
         }
+        // Add "$" if not yet present (either textfield is empty or it doesn't yet have "$")
+        if countElements(textField.text) == 0 || textField.text[textField.text.startIndex] != "$" {
+            textField.text = "$" + textField.text
+        }
         // Reconstruct value of textfield for calculateTip()
         // The range represents what part of the text should be replaced by replacementString
         // If user added text, range length is 0; if user deleted, range length is 1 and replacementString is empty
         // Lastly, need to cast textField.text to NSString because range is an NSRange
         let textFieldBefore: NSString = textField.text
         var textFieldValue:  String   =
-            textFieldBefore.substringToIndex(range.location) +
+        textFieldBefore.substringToIndex(range.location) +
             addedCharacter +
             textFieldBefore.substringFromIndex(range.location + range.length)
         
@@ -96,7 +100,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         resetState()
         return true
     }
-
+    
     func didTextMealCostEndEditing() {
         textMealCost.resignFirstResponder()
     }
@@ -131,9 +135,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     func calculateTip(mealCost:String) -> Bool {
         // Tip percentage must be rounded to match label
-        var tipPercentage : Float = round(sliderTip.value)
-        
-        var floatMealCost   = (mealCost as NSString).floatValue
+        var tipPercentage: Float = round(sliderTip.value)
+        // Make sure meal cost has no dollar sign
+        var mealCostSanitized = mealCost
+        if (countElements(mealCost) > 0 && mealCost[mealCost.startIndex] == "$") {
+            mealCostSanitized = mealCost.substringFromIndex(advance(mealCost.startIndex, 1))
+        }
+        var floatMealCost   = (mealCostSanitized as NSString).floatValue
         var calculatedTip   = floatMealCost * tipPercentage / 100
         var calculatedTotal = calculatedTip + floatMealCost
         
@@ -146,17 +154,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         // Now calculate tip and totals per person
         var numberPeople = Float(segmentedNumberPeople.selectedSegmentIndex + segmentedNumberPeopleOffset)
-
+        
         var calculatedTipPerPerson   = calculatedTip / numberPeople
         var calculatedTotalPerPerson = calculatedTotal / numberPeople
-
+        
         // Format calculations as currency
         var calculatedTipPerPersonFormat   = NSString(format: "%0.2f", calculatedTipPerPerson)
         var calculatedTotalPerPersonFormat = NSString(format: "%0.2f", calculatedTotalPerPerson)
         
         labelTipCalculatedPerPerson.text   = "$\(calculatedTipPerPersonFormat)"
         labelTotalCalculatedPerPerson.text = "$\(calculatedTotalPerPersonFormat)"
-
+        
         return true
     }
 }
