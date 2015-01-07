@@ -58,7 +58,6 @@
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="17" minValue="5" maxValue="29.5" translatesAutoresizingMaskIntoConstraints="NO" id="eEc-pb-kvX">
                                 <rect key="frame" x="0.0" y="-15" width="118" height="31"/>
-                                <color key="tintColor" red="0.97900980709999996" green="0.58352220060000004" blue="0.051039110870000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="didSliderTipChange:" destination="vXZ-lx-hvc" eventType="valueChanged" id="5T5-Fv-F3p"/>
                                 </connections>

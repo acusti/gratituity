@@ -22,6 +22,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var labelTipCalculatedDefault:   String = ""
     var labelTotalCalculatedDefault: String = ""
     
+    // Fetch app styling constants
+    let appStyles = GratuityStyles()
+    
     // TODO: Support all device orientations
     // override func supportedInterfaceOrientations() -> Int {
     //    return Int(UIInterfaceOrientationMask.All.rawValue)
@@ -29,11 +32,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // Kick it off
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        textMealCost.delegate       = self
-        sliderTipDefault            = sliderTip.value
-        labelTipCalculatedDefault   = labelTipCalculated.text!
-        labelTotalCalculatedDefault = labelTotalCalculated.text!
+        
+        // Set default tint color
+        self.view.tintColor = appStyles.colors["accent"]
+        
+        // Set up defaults
+        textMealCost.delegate                = self
+        sliderTipDefault                     = sliderTip.value
+        labelTipCalculatedDefault            = labelTipCalculated.text!
+        labelTotalCalculatedDefault          = labelTotalCalculated.text!
         textMealCost.becomeFirstResponder()
     }
 
@@ -54,9 +61,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Lastly, need to cast textField.text to NSString because range is an NSRange
         let textFieldBefore: NSString = textField.text
         var textFieldValue:  String   =
-              textFieldBefore.substringToIndex(range.location) +
-              addedCharacter +
-              textFieldBefore.substringFromIndex(range.location + range.length)
+            textFieldBefore.substringToIndex(range.location) +
+            addedCharacter +
+            textFieldBefore.substringFromIndex(range.location + range.length)
         
         self.calculateTip(textFieldValue)
         return true
