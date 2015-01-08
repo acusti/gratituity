@@ -127,9 +127,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // Function to reset the app state
     // @param optional Bool isSliderTipReset indicates whether to also reset tipSlider
     func resetState(isSliderTipReset : Bool = false) {
-        textMealCost.text         = ""
-        labelTipCalculated.text   = labelTipCalculatedDefault
-        labelTotalCalculated.text = labelTotalCalculatedDefault
+        textMealCost.text                  = ""
+        labelTipCalculated.text            = labelTipCalculatedDefault
+        labelTotalCalculated.text          = labelTotalCalculatedDefault
+        labelTipCalculatedPerPerson.text   = labelTipCalculatedPerPersonDefault
+        labelTotalCalculatedPerPerson.text = labelTotalCalculatedPerPersonDefault
         if isSliderTipReset {
             sliderTip.value    = sliderTipDefault
             labelTipValue.text = "\(sliderTipDefault)"
