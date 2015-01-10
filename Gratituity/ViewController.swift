@@ -19,7 +19,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var segmentedNumberPeople:         UISegmentedControl!
     @IBOutlet weak var labelTipCalculatedPerPerson:   UILabel!
     @IBOutlet weak var labelTotalCalculatedPerPerson: UILabel!
-    
+
     // Declare defaults for resetting UI state
     var sliderTipDefault:                     Float  = 0
     var labelTipCalculatedDefault:            String = ""
